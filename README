@@ -1,16 +1,19 @@
 Debug-LTrace
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
+Debug::LTrace instruments subroutines to provide tracing information
+upon every call and return. Using Debug::LTrace does not require any changes to your sources.
+The trace information is output using the standard warn() function.
 
-A README file is required for CPAN modules since CPAN extracts the README
-file from a module distribution so that people browsing the archive
-can use it to get an idea of the module's uses. It is usually a good idea
-to provide version information here so that people can decide whether
-fixes for the module are worth downloading.
+It was inspired by Debug::Trace, but introduces new features such as
+ 1. Lexically scoped tracing
+ 2. Implements tracing in such way that the standard caller function works correctly
+ 3. Enable package tracing (using '*' syntax)
+ 4. Nice output formatting
+ 5. More debug information (time of execution, call context...)
 
+Also Debug::LTrace supports Debug::Trace syntax (modifiers are not supported yet). 
+
+Devel::TraceCalls - Powerful CPAN module but too complex API and not so convenient as Debug::Trace
 
 INSTALLATION
 
