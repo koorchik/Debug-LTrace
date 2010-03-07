@@ -1,10 +1,11 @@
 #!/usr/bin/env perl 
 package FOO;
+use lib qw#lib ../lib t#;
 use strict;
 use warnings;
 use Debug::LTrace;
 use Data::Dumper;
-use Time::HiRes;
+
 {   
     #debug is on
     my $obj = Debug::LTrace->new(qw/*/);
@@ -41,8 +42,6 @@ sub inner {
 
 sub inner2 {
     my $a = shift;
-    Time::HiRes::sleep rand;
-
     return ($a, ++$a);
 }
 
