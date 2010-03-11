@@ -114,11 +114,22 @@ Devel::TraceCalls - Powerful CPAN module but too complex API and not so convenie
     my $tracer = Debug::Trace->new('*'); 
     
     # Trace all subroutines in package SomeModule and AnotherModule::foo
-    my $tracer = Debug::Trace->new('SomeModule::*', 'AnotherModule::foo');  
-
+    my $tracer = Debug::Trace->new('SomeModule::*', 'AnotherModule::foo');
+    
 =back
 
+=head2 Output trace log using custom function
 
+Debug::LTrace outputs trace log using standart warn function. So you can catch SIGWARN with this code:
+
+    $SIG{__WARN__} = sub {
+        if ( $_[0] =~ /^TRACE/ ) {
+            goto &custum_sub
+        } else {
+            print STDERR @_;  
+        }
+    }
+    
 =head1 METHODS
 
 =head2 Debug::LTrace->new($sub [, $sub2, $sub3 ...] );
