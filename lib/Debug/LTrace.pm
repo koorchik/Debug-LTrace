@@ -18,7 +18,7 @@ Version 0.01
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 SYNOPSIS
 
@@ -37,7 +37,7 @@ our $VERSION = '0.02';
 
     #or  
 
-    perl -MDebug::Trace='*' yourprogram.pl # trace all subroutines in package main
+    perl -MDebug::LTrace='*' yourprogram.pl # trace all subroutines in package main
 
 =head1 DESCRIPTION
 
@@ -74,7 +74,7 @@ More debug information (time of execution, call context...)
 Also Debug::LTrace supports Debug::Trace syntax (modifiers are not supported yet). 
 
 
-Devel::TraceCalls - Powerful CPAN module but too complex API and not so convenient as Debug::Trace
+Devel::TraceCalls - Powerful CPAN module but too complex API and not so convenient as Debug::LTrace
 
 
 
@@ -85,36 +85,36 @@ Devel::TraceCalls - Powerful CPAN module but too complex API and not so convenie
 =item from command line:
 
     # Trace "foo" and "bar" subroutines
-    perl -MDebug::Trace=foo,bar yourprogram.pl 
+    perl -MDebug::LTrace=foo,bar yourprogram.pl 
 
     # Trace all subroutines in current package ( "main" )
-    perl -MDebug::Trace='*' yourprogram.pl 
+    perl -MDebug::LTrace='*' yourprogram.pl 
     
     # Trace all subroutines in package "SomeModule" and "AnotherModule::foo"
-    perl -MDebug::Trace='SomeModule::*, AnotherModule::foo' yourprogram.pl 
+    perl -MDebug::LTrace='SomeModule::*, AnotherModule::foo' yourprogram.pl 
 
 
 =item the same in code:
 
     # Trace "foo", "bar" subroutines in current package (can be not "main")
-    use Debug::Trace qw/foo bar/;  
+    use Debug::LTrace qw/foo bar/;  
 
     # Trace all subroutines in current package (can be not "main")
-    use Debug::Trace qw/*/; 
+    use Debug::LTrace qw/*/; 
     
     # Trace all subroutines in package "SomeModule" and "AnotherModule::foo"
-    use Debug::Trace qw/SomeModule::* AnotherModule::foo/; 
+    use Debug::LTrace qw/SomeModule::* AnotherModule::foo/; 
 
 =item local tracing (is on only when $tracer is alive):
 
     # Trace foo, bar subroutines in current package (can be not "main")
-    my $tracer = Debug::Trace->new( 'foo',  'bar' );  
+    my $tracer = Debug::LTrace->new( 'foo',  'bar' );  
     
     # Trace all subroutines in current package (can be not "main")
-    my $tracer = Debug::Trace->new('*'); 
+    my $tracer = Debug::LTrace->new('*'); 
     
     # Trace all subroutines in package SomeModule and AnotherModule::foo
-    my $tracer = Debug::Trace->new('SomeModule::*', 'AnotherModule::foo');
+    my $tracer = Debug::LTrace->new('SomeModule::*', 'AnotherModule::foo');
     
 =back
 
@@ -249,7 +249,7 @@ sub _dump {
 
 =item * 
 
-improve Debug::Trace compatibility (add modifiers support)
+improve Debug::LTrace compatibility (add modifiers support)
 
 =item * 
 
